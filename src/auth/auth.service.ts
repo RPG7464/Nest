@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable,UnauthorizedException } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { UsersService } from 'src/users/users.service';
 import { RegisterDto } from './dto/auth.dto';
 import * as bcrypt from 'bcrypt';
@@ -19,11 +19,12 @@ export class AuthService {
     }
     return null;
   }
+
   //se encarga de registrar el usuario en la BD buscando primero si este se encuentra para sino lanzar una excepcion y encripta la contraseña
   async register({ username, password }: RegisterDto) {
     const user = await this.userService.findOneByUsername(username);
     if (user) {
-      throw new BadRequestException('Usuario ya existente en la Base de Datos');
+      throw new BadRequestException('This user is alredy exists');
     } else {
       return await this.userService.create({
         username,

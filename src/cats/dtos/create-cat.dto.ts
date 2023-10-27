@@ -15,4 +15,8 @@ export class CreateCatDto {
   @IsInt()
   @IsPositive()
   edad: number;
+ 
+  @IsString()
+  name: string;
+
 }

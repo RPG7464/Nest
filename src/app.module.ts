@@ -1,26 +1,16 @@
 import { Module } from '@nestjs/common';
 import { CatsModule } from './cats/cats.module';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { APP_PIPE } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common/pipes';
+import { jwtConstants } from './auth/constants/jwtConstants';
+import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
   imports: [
     CatsModule,
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'postgres',
-      password: 'Rafael',
-      database: 'Nest',
-      autoLoadEntities: true,
-      synchronize: true,
-      migrations: ['src/migrations/*.ts'],
-      migrationsTableName: 'migrations_TypeORM',
-    }),
+    MongooseModule.forRoot(jwtConstants.DATABASE_URL),
     AuthModule,
     UsersModule,
   ],
