@@ -7,6 +7,8 @@ export class User {
 
   @Prop({ nullable: false })
   password: string;
-}
 
+  @Prop({ default: 'user' })
+  role: string;
+}
 export const UserSchema = SchemaFactory.createForClass(User);

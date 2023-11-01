@@ -33,6 +33,7 @@
     "class-validator": "^0.14.0",
     "cookie-parser": "^1.4.6",
     "cookies": "^0.8.0",
+    "migrate": "^2.0.0",
     "mongoose": "^7.5.3",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.1",

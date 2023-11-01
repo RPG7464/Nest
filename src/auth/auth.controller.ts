@@ -18,6 +18,7 @@ export class AuthController {
     @Body()
     registerDto: RegisterDto,
   ) {
+    console.log(registerDto);
     return this.authservice.login(registerDto);
   }
 }

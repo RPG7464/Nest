@@ -3,6 +3,10 @@ import { CreateCatDto } from './dtos/create-cat.dto';
 import { CatsService } from './cats.service';
 import { UpdateCatDto } from './dtos/UpdateCatDto.dto';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
+import { Roles } from 'src/auth/decorators/role.decorator';
+import { Role } from 'src/auth/enum/role.enum';
+import { RoleGuard } from 'src/auth/guards/role.guard';
+import { Auth } from 'src/auth/decorators/auth.decorator';
 
 @Controller('cats')
 export class CatsController {
@@ -14,7 +18,7 @@ export class CatsController {
   }
 
   @Get()
-  @UseGuards(JwtAuthGuard)
+  @Auth(Role.User)
   findAll() {
     return this.catsService.findAll();
   }
@@ -23,7 +27,7 @@ export class CatsController {
     return this.catsService.findOne(id);
   }
   @Patch(':id')
-  @UseGuards(JwtAuthGuard)
+  @Auth(Role.Admin)
   update(@Param('id') id: string, @Body() updateCatDto: UpdateCatDto) {
     return this.catsService.update(id, updateCatDto);
   }
