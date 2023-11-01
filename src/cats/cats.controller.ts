@@ -1,11 +1,16 @@
-import {Patch,Delete,Body,Controller,Get,Param,Post,UseGuards,} from '@nestjs/common';
+import {
+  Patch,
+  Delete,
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+} from '@nestjs/common';
 import { CreateCatDto } from './dtos/create-cat.dto';
 import { CatsService } from './cats.service';
 import { UpdateCatDto } from './dtos/UpdateCatDto.dto';
-import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
-import { Roles } from 'src/auth/decorators/role.decorator';
 import { Role } from 'src/auth/enum/role.enum';
-import { RoleGuard } from 'src/auth/guards/role.guard';
 import { Auth } from 'src/auth/decorators/auth.decorator';
 
 @Controller('cats')
