@@ -21,9 +21,7 @@ export class CatsController {
   create(@Body() createCatDto: CreateCatDto) {
     return this.catsService.create(createCatDto);
   }
-
   @Get()
-  @Auth(Role.User)
   findAll() {
     return this.catsService.findAll();
   }
